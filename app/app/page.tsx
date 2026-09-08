@@ -1,3 +1,5 @@
-export default function AppPage() {
-  return <h1>App</h1>;
+import Form from "./form";
+
+export default function App() {
+  return <Form />;
 }
