@@ -1,11 +1,3 @@
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
-import Form from "./form";
-
-export default async function App() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect("/login");
-
-  return <Form />;
+export default function Home() {
+  return <h1>Accueil</h1>;
 }
