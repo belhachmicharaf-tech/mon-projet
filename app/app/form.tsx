@@ -1,15 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { crier } from "./actions";
+import { creerItem } from "./actions";
 
-export default function Form() {
+export default function Form({ items }: { items: any[] }) {
   const [texte, setTexte] = useState("");
-  const [resultat, setResultat] = useState("");
 
   async function handleClick() {
-    const r = await crier(texte);
-    setResultat(r);
+    await creerItem(texte);
+    setTexte("");
   }
 
   return (
@@ -22,7 +21,11 @@ export default function Form() {
       <button className="border p-2" onClick={handleClick}>
         Envoyer
       </button>
-      <p>{resultat}</p>
+      <ul className="flex flex-col gap-2">
+        {items.map((it) => (
+          <li key={it.id} className="border p-2">{it.content}</li>
+        ))}
+      </ul>
     </div>
   );
 }
