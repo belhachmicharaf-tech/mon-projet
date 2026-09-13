@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import Form from "./form";
-import Logout from "./logout";
 
 export default async function App() {
   const supabase = await createClient();
@@ -13,10 +12,5 @@ export default async function App() {
     .select("*")
     .order("created_at", { ascending: false });
 
-  return (
-    <div className="flex flex-col gap-4 p-8">
-      <Logout />
-      <Form items={items ?? []} />
-    </div>
-  );
+  return <Form items={items ?? []} />;
 }
