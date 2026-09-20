@@ -78,12 +78,11 @@ export async function analyser(texte: string): Promise<Resultat> {
 
   for (let essai = 0; essai < 2; essai++) {
     const res = await getClient().messages.create({
-  model: "claude-sonnet-5",
-  max_tokens: 1024,
-  temperature: 0,
-  system: SYSTEM,
-  messages,
-});
+      model: "claude-sonnet-5",
+      max_tokens: 1024,
+      system: SYSTEM,
+      messages,
+    });
 
 
     const bloc = res.content.find((b) => b.type === "text");
